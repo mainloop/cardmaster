@@ -1,0 +1,89 @@
+{
+  "currencies": [
+    {
+      "name": "Russian ruble",
+      "value": "р",
+      "code": 643,
+      "templates": [
+        "RUB",
+        "RUR",
+        "Р",
+        "РУБ"
+      ]
+    },
+    {
+      "name": "US dollar",
+      "value": "$",
+      "code": 840,
+      "templates": [
+        "USD"
+      ]
+    },
+    {
+      "name": "Euro",
+      "value": "€",
+      "code": 978,
+      "templates": [
+        "EUR"
+      ]
+    },
+    {
+      "name": "Belorussian ruble",
+      "value": "Br",
+      "code": 933,
+      "templates": [
+        "BYN",
+        "BYR"
+      ]
+    },
+    {
+      "name": "Canadian dollar",
+      "value": "cad",
+      "code": 124,
+      "templates": [
+        "CAD"
+      ]
+    },
+    {
+      "name": "Hryvnia",
+      "value": "грн",
+      "code": 980,
+      "templates": [
+        "UAH",
+        "GRN"
+      ]
+    },
+    {
+      "name": "Pound sterling",
+      "value": "£",
+      "code": 826,
+      "templates": [
+        "GBP"
+      ]
+    },
+    {
+      "name": "Swedish krona",
+      "value": "sek",
+      "code": 752,
+      "templates": [
+        "SEK"
+      ]
+    },
+    {
+      "name": "Bulgarian lev",
+      "value": "lev",
+      "code": 975,
+      "templates": [
+        "BGN"
+      ]
+    },
+    {
+      "name": "Norwegian krone",
+      "value": "nor",
+      "code": 578,
+      "templates": [
+        "NOK"
+      ]
+    }
+  ]
+}
