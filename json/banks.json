@@ -8,6 +8,7 @@
       "credit": [ "Operatsiya", "Spisanie", "Pokupka", "Purchase", "Credit"  ],
       "debit": [ "Zachislenie", "Payment to card", "Debit" ],
       "cash": [],
+      "update": [],
       "filters": [
         {
           "comment" : "",
@@ -24,38 +25,74 @@
     },
     {
       "name": "Avangard",
-      "phones": [ "Avangard" ],
-      "date_formats": [ "dd.MM.yy hh:mm" ],
-      "debit": [ "POPOLN" ],
-      "credit": [ "POKUPKA", "PLATEZ" ],
-      "cash": [ "CASH" ],
+      "phones": [
+        "Avangard"
+      ],
+      "date_formats": [
+        "dd.MM.yy hh:mm"
+      ],
+      "debit": [
+        "POPOLN"
+      ],
+      "credit": [
+        "POKUPKA",
+        "PLATEZ",
+        "PEREVOD"
+      ],
+      "cash": [
+        "CASH"
+      ],
+      "update": ["SPISANIE"],
+      "separator" : "//",
       "filters": [
         {
-          "pattern": "(POKUPKA)\\s(.*?),\\s\\w{2}\\s(\\d+\\.\\d{2}\\s[A-Z]{3}),\\sCARD\\*(\\d{4}).*BAL\\s(\\d+\\.\\d{2}\\s+[A-Z]{3})\\s(\\d{2}\\.\\d{2}\\.\\d{2}\\s\\d{1,2}:\\d{2})\\sEND",
-          "groups": [ "OPERATION", "PLACE", "AMOUNT", "CARD", "BALANCE", "DATE" ]
-        },
-        {
-          "pattern": "(POPOLN)(\\sBEZNAL)?\\s(.*?)(,\\s\\w{2})?\\s(\\d+\\.\\d{2}\\s[A-Z]{3})\\s#\\*(\\d{5})\\sBAL\\s(\\d+\\.\\d{2}\\s+[A-Z]{3})\\s(\\d{2}\\.\\d{2}\\.\\d{2}\\s\\d{1,2}:\\d{2})\\sEND",
-          "groups": [ "OPERATION", "SKIP", "PLACE", "SKIP", "AMOUNT", "CARD", "BALANCE", "DATE" ]
-        },
-        {
-          "pattern": "(CASH)\\s(.*?)\\s([\\d\\.]+\\s[A-Z]{3}),\\sCARD\\*(\\d{4}).*?BAL\\s([\\d\\.]+\\s[A-Z]{3})\\s(\\d{2}\\.\\d{2}\\.\\d{2}\\s\\d{1,2}:\\d{2})\\sEND",
-          "groups": [ "OPERATION", "PLACE", "AMOUNT", "CARD", "BALANCE", "DATE" ]
-        },
-        {
-          "pattern": "((PLATEZ)\\sTIPOVOI)\\s([\\d\\.]+\\s[A-Z]{3})\\s#\\*(\\d{5})\\sBAL\\s([\\d\\.]+\\s[A-Z]{3})\\s([\\d\\.]+\\s[\\d:]+).*",
+          "pattern":"^((PLATEZ)\\sTIPOVOI)\\s([\\d\\.]+\\s.{3}).*\\*(\\d+).*\\s([\\d\\.]+\\s.{3})\\s([\\d\\.]+\\s[\\d:]+).*",
           "groups": [ "PLACE", "OPERATION", "AMOUNT", "CARD", "BALANCE", "DATE" ]
+        },
+        {
+          "pattern" : "^(PEREVOD)\\s[A-Z]{3}\\s(.*?)\\s([\\d\\.]+\\s[A-Z]{3})\\s#\\*(\\d{5})\\sBAL\\s([\\d\\.]+\\s[A-Z]{3})\\s([\\d\\.]+\\s[\\d:]+).*",
+          "groups": [  "OPERATION", "PLACE", "AMOUNT", "CARD", "BALANCE", "DATE" ]
+        },
+        {
+          "pattern" : "^(CASH)\\s(.*?)\\s([\\d\\.]+\\s[A-Z]{3}),\\sCARD\\*(\\d{4})\\s.*?\\sBAL\\s([\\d\\.]+\\s[A-Z]{3})\\s([\\d\\.]+\\s[\\d:]+).*",
+          "groups": [  "OPERATION", "PLACE", "AMOUNT", "CARD", "BALANCE", "DATE" ]
+        },
+        {
+          "pattern" : "^(POPOLN)\\s(BEZNAL|OFFLINE)?(.*?)\\s([\\d\\.]+\\s[A-Z]{3})\\s\\#\\*(\\d{5})\\s(BAL\\s([\\d\\.]+\\s[A-Z]{3})\\s([\\d\\.]+\\s[\\d:]+))?.*",
+          "groups": [  "OPERATION", "SKIP","PLACE", "AMOUNT", "CARD", "SKIP" ,"BALANCE", "DATE" ]
+        },
+        {
+          "pattern" : "^(POKUPKA)\\s(.*?)(,\\s[A-Z]{2})?\\s([\\d\\.]+\\s[A-Z]{3}),\\sCARD\\*(\\d{4}).*?\\sBAL\\s([\\d\\.]+\\s[A-Z]{3})\\s([\\d\\.]+\\s[\\d:]+).*",
+          "groups": [  "OPERATION","PLACE", "SKIP", "AMOUNT", "CARD", "BALANCE", "DATE" ]
+        },
+        {
+          "pattern" : "^(SPISANIE).*?#\\*(\\d{5})\\sBAL\\s([\\d\\.]+\\s[A-Z]{3})\\s([\\d\\.]+\\s[\\d:]+).*",
+          "groups": [  "OPERATION","CARD", "BALANCE", "DATE" ]
+        },
+        {
+          "pattern" : "^(SPISANIE).*?CARD\\*(\\d{4}).*?([\\d\\.]+\\s[\\d:]+)\\sBAL\\s([\\d\\.]+\\s[A-Z]{3})",
+          "groups": [ "OPERATION", "CARD", "DATE", "BALANCE"]
+        },
+        {
+          "pattern":"^(PEREVOD)\\s[A-Z]{3}\\sSEBE\\s([\\d\\.]+\\s[A-Z]{3}),\\sBAL\\s#\\*(\\d{5}):\\s([\\d\\.]+\\s[A-Z]{3})\\s#\\*(.*?):\\s([\\d\\.]+\\s[A-Z]{3})\\s([\\d\\.]+\\s[\\d:]+).*",
+          "groups": [ "OPERATION", "AMOUNT", "CARD", "BALANCE", "PLACE", "SKIP" ,"DATE" ]
+        },
+        {
+          "pattern" : "^(POPOLN)\\sOFFLINE\\s(.*?),\\s[A-Z]{3}\\s([\\d\\.]+\\s[A-Z]{3})\\sCARD\\*(\\d{4}).*?\\sBAL\\s([\\d\\.]+\\s[A-Z]{3})\\s([\\d\\.]+\\s[\\d:]+).*",
+          "groups" :  [ "OPERATION", "PLACE","AMOUNT", "CARD", "BALANCE", "DATE" ]
         }
+
       ],
-      "info": [ "Uvazhaemiy klient", "PIN CHANGE", "KOD PODTVERZDENIA", "INTERNET-BANK VHOD", "SMS NASTROIKY CHANGE" ]
+      "info" : ["INTERNET-BANK", "KOD PODTVERZDENIA", "SMS NASTROIKY CHANGE", "Uvazhaemiy klient!", "PIN CHANGE", "Служба поддержки" ]
     },
     {
       "name": "Sberbank",
       "phones": [ "900" ],
       "date_formats": [ "dd.MM.yy hh:mm", "dd.MM.yy" ],
-      "debit": [ "операция зачисления"  ],
+      "debit": [ "операция зачисления", "зачисление" ],
       "credit": [ "оплата", "покупка" ],
-      "cash": [],
+      "cash": ["выдача наличных"],
+      "update": ["списание", "операция списания", "Баланс", "доступно" ],
       "filters": [
         {
           "pattern": "(\\D{4})(\\d{4}):?\\s([\\d\\.]+\\s?[\\d\\:]+)\\s([^/]*?)\\s([\\d\\.]+\\s?[^\\d\\s/\\.]{1,3})\\.?\\s?(.*?)(выполнена\\sуспешно)?\\.?\\s(Баланс|Доступно):\\s([\\d\\s\\.,]*\\d\\s?\\D{1,3})",
@@ -64,19 +101,23 @@
         {
           "pattern" : "(\\D{4})(\\d{4}):?\\s([\\d\\.]{8})\\s((оплата)\\sМобильного банка)\\sза\\s[\\d/-]+.*?\\s([\\d\\.]+\\s?[^\\d\\s\\.]{1,3}).*?:\\s([\\d\\.]+\\s?\\D{1,3})\\.?",
           "groups": [ "TYPE", "CARD", "DATE", "PLACE", "OPERATION", "AMOUNT", "BALANCE" ]
+        },
+        {
+           "pattern" : "(\\D{4})(\\d{4})\\s(Баланс|доступно):\\s([\\d\\.]+\\s?[^\\s\\d]{1,3})",
+           "groups": ["TYPE", "CARD" ,"OPERATION", "BALANCE"]
 
         }
       ],
       "info": [
-        "одно SMS и Вы снова на связи",
-        "сообщаем Вам о том",
-        "для Вас действует предварительно одобренный кредит",
-        "Вы можете выбрать подходящий Вам вклад в Сбербанке",
-        "Расплатитесь Вашей дебетовой картой",
-        "Сбербанк Онлайн. Внимательно проверьте реквизиты",
-        "Совершен вход в Ваш Сбербанк Онлайн",
-        "Пароль для входа в Сбербанк Онлайн",
-        "Вход в Сбербанк Онлайн"
+        "Сбербанк Онлайн",
+        "Сбербанк ОнЛ@йн",
+        "Ваш Сбербанк",
+        "Ваш СБЕРБАНК",
+        "ПАО Сбербанк",
+        "ОТКАЗ",
+        "пароль",
+        "Список подключенных карт",
+        "Для оплаты с карты"
       ]
     }
   ]
