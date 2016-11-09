@@ -2,7 +2,7 @@
   "version" : "0.0.1",
   "currencies": [
     {
-      "name": "Russian ruble",
+      "name": "Russian Ruble",
       "value": "р",
       "code": 643,
       "templates": [
@@ -13,7 +13,7 @@
       ]
     },
     {
-      "name": "US dollar",
+      "name": "US Dollar",
       "value": "$",
       "code": 840,
       "templates": [
@@ -29,7 +29,7 @@
       ]
     },
     {
-      "name": "Belorussian ruble",
+      "name": "Belorussian Ruble",
       "value": "Br",
       "code": 933,
       "templates": [
@@ -38,7 +38,7 @@
       ]
     },
     {
-      "name": "Canadian dollar",
+      "name": "Canadian Dollar",
       "value": "cad",
       "code": 124,
       "templates": [
@@ -55,7 +55,7 @@
       ]
     },
     {
-      "name": "Pound sterling",
+      "name": "Pound Sterling",
       "value": "£",
       "code": 826,
       "templates": [
@@ -63,7 +63,7 @@
       ]
     },
     {
-      "name": "Swedish krona",
+      "name": "Swedish Krona",
       "value": "sek",
       "code": 752,
       "templates": [
@@ -71,7 +71,7 @@
       ]
     },
     {
-      "name": "Bulgarian lev",
+      "name": "Bulgarian Lev",
       "value": "lev",
       "code": 975,
       "templates": [
@@ -79,11 +79,35 @@
       ]
     },
     {
-      "name": "Norwegian krone",
+      "name": "Norwegian Krone",
       "value": "nor",
       "code": 578,
       "templates": [
         "NOK"
+      ]
+    },
+    {
+      "name": "Yen",
+      "value": "¥",
+      "code": 392,
+      "templates": [
+        "JPY"
+      ]
+    },
+    {
+      "name": "Swiss Franc",
+      "value": "chf",
+      "code": 756,
+      "templates": [
+        "CHF"
+      ]
+    },
+    {
+      "name": "Yuan Renminbi",
+      "value": "cny",
+      "code": 156,
+      "templates": [
+        "CNY"
       ]
     }
   ]
