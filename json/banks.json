@@ -83,7 +83,7 @@
         }
 
       ],
-      "info" : ["INTERNET-BANK", "KOD PODTVERZDENIA", "SMS NASTROIKY CHANGE", "Uvazhaemiy klient!", "PIN CHANGE", "Служба поддержки" ]
+      "info" : ["INTERNET-BANK", "KOD PODTVERZDENIA", "SMS NASTROIKY CHANGE", "Uvazhaemiy klient!", "PIN CHANGE", "Служба поддержки", "OTKAZ" ]
     },
     {
       "name": "Sberbank",
@@ -109,15 +109,14 @@
         }
       ],
       "info": [
-        "Сбербанк Онлайн",
-        "Сбербанк ОнЛ@йн",
-        "Ваш Сбербанк",
-        "Ваш СБЕРБАНК",
-        "ПАО Сбербанк",
+        "Сбербанк",
         "ОТКАЗ",
         "пароль",
         "Список подключенных карт",
-        "Для оплаты с карты"
+        "Для оплаты с карты",
+        "Уважаемый клиент",
+        "Ваш менеджер",
+        "отправьте"
       ]
     }
   ]
